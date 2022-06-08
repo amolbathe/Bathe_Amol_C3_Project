@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.*;
 
 public class Restaurant {
     private String name;
@@ -16,17 +17,17 @@ public class Restaurant {
         this.openingTime = openingTime;
         this.closingTime = closingTime;
     }
-
+    //Task 1.2 Completed
     public boolean isRestaurantOpen() {
-        return true;
-        //DELETE ABOVE STATEMENT AND WRITE CODE HERE
+        return getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime);
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
+    // Task 1.1 Completed
     public List<Item> getMenu() {
-        return null;
-        //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
+        return this.menu;
+
     }
 
     private Item findItemByName(String itemName){
@@ -41,7 +42,7 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
